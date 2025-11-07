@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.scene {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.scene.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.content {
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+}
+
+/* Scene 1: Introduction */
+.scene-1 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.device-image {
+    margin-bottom: 30px;
+}
+
+.device {
+    width: 200px;
+    height: 250px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 24px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.fade-in-delay {
+    animation: fadeIn 1s ease-in 0.5s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scene 2: Installation */
+.scene-2 {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+.installation-demo {
+    margin-bottom: 30px;
+}
+
+.install-svg {
+    width: 300px;
+    height: 300px;
+}
+
+.device-install {
+    animation: slideDown 2s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+    0% { transform: translateY(-100px); opacity: 0; }
+    60% { transform: translateY(-100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.hand {
+    animation: handMove 2s ease-in-out forwards;
+}
+
+@keyframes handMove {
+    0% { transform: translate(-50px, -50px); opacity: 0; }
+    40% { transform: translate(-50px, -50px); opacity: 0; }
+    70% { transform: translate(0, 0); opacity: 1; }
+    100% { transform: translate(20px, 10px); opacity: 1; }
+}
+
+.checkmark {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheck 1s ease-in-out 1.5s forwards;
+}
+
+@keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+}
+
+.feature-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.feature-text {
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Scene 3: Protection */
+.scene-3 {
+    background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+}
+
+.protection-svg {
+    width: 300px;
+    height: 300px;
+}
+
+.pulse-ring {
+    animation: pulse 2s ease-out infinite;
+}
+
+.pulse-ring.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.pulse-ring.delay-2 {
+    animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+    0% { r: 40; opacity: 0.5; }
+    100% { r: 100; opacity: 0; }
+}
+
+.shield-check {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: drawCheck 1s ease-in-out 0.5s forwards;
+}
+
+.gas-particles circle {
+    animation: floatAway 3s ease-out infinite;
+}
+
+.gas-particles circle:nth-child(1) { animation-delay: 0s; }
+.gas-particles circle:nth-child(2) { animation-delay: 0.5s; }
+.gas-particles circle:nth-child(3) { animation-delay: 1s; }
+.gas-particles circle:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes floatAway {
+    0% { opacity: 0.6; }
+    50% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 0; transform: translateY(-30px); }
+}
+
+/* Scene 4: Benefits */
+.scene-4 {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.benefit-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+}
+
+.benefit-card:nth-child(1) { animation-delay: 0.2s; }
+.benefit-card:nth-child(2) { animation-delay: 0.4s; }
+.benefit-card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideUp {
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.icon.safe { color: #27ae60; }
+.icon.reliable { color: #f39c12; }
+.icon.easy { color: #3498db; }
+
+.benefit-card h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 25px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: pulse-scale 2s ease-in-out infinite;
+}
+
+@keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.highlight-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Scene 5: Call to Action */
+.scene-5 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.whatsapp-icon {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 30px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.cta-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+}
+
+.cta-subtitle {
+    font-size: 24px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.whatsapp-number {
+    background: white;
+    padding: 20px 40px;
+    border-radius: 50px;
+    display: inline-block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: pulse-scale 2s ease-in-out infinite;
+}
+
+.whatsapp-number p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #25D366;
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1000;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #fff;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .video-container {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .feature-title, .cta-title {
+        font-size: 28px;
+    }
+
+    .device {
+        width: 150px;
+        height: 187px;
+    }
+
+    .install-svg, .protection-svg {
+        width: 250px;
+        height: 250px;
+    }
+}
